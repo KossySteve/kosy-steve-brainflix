@@ -1,0 +1,79 @@
+@use "./colors" as *;
+@use "./breakpoints" as *;
+@use "./mixins" as *;
+@use "./typography" as *;
+
+body {
+  color: $pry-color-light;
+  @include no-margin-padding;
+  font-family: 'Avenir';
+}
+
+.nav {
+  background-color: $pry-color-dark;
+  width: 100%;
+  @include flexbox-settings(center, center) {
+    flex-flow: column nowrap;
+    @include tablet {
+      flex-flow: row nowrap;
+      justify-content: flex-start;
+    }
+  }
+  &__logo {
+    text-decoration: none;
+    color: $pry-color-light;
+    margin: 1rem 0 0.02rem;
+    @include tablet {
+      margin: 0 0 0 3rem;
+    }
+    @include desktop {
+      margin: 1.5rem 0 1.5rem 10rem;
+    }
+  }
+  &__list {
+    list-style: none;
+    @include flexbox-settings(space-between, center);
+    @include no-margin-padding;
+    @include tablet {
+      // border: red 5px solid;
+      justify-content: space-evenly;
+      width: 22rem;
+    }
+  }
+  &__list-item {
+    @include flexbox-settings(center, center);
+    @include tablet {
+      justify-content: flex-start;
+      // border: blue 5px solid;
+    }
+  }
+  &__link {
+    padding: 1.5rem 0 0.8rem;
+    width: 50vw;
+    //text-align: center;
+    @include flexbox-settings(center, center);
+    text-decoration: none;
+    @include mobile-copy-font {
+      font-size: 1.1rem;
+    }
+    color: $sec-color-shade;
+    transition: font-weight 0.5s;
+    border-bottom: 4px solid $pry-color-dark;
+    @include tablet {
+      padding: 2rem 0;
+      width: 100%;
+      font-size: 1rem;
+    }
+    @include desktop {
+      padding: 2.5rem 0;
+    }
+  }
+  &__link:hover, &__link:active {
+    border-bottom: 4px solid white;
+    color: $pry-color-light;
+  }
+  &__link:link {
+    border-bottom: 4px solid $pry-color-dark;
+  }
+
+}
