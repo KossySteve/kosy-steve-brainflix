@@ -6,17 +6,25 @@ import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
 
 class App extends Component {
-  state = { maxVideoList: maxVideoList, minVideoList: minVideoList };
+  state = { maxVideoList: maxVideoList[0], minVideoList: minVideoList };
+
+
+  handleVideoChange = (id) => {
+    let newMain = this.state.minVideoList.find(video => video.id === id);
+    this.setState({ maxVideoList: newMain })
+    console.log("Hello")
+  }
 
   render() {
-    // const filteredPlants = plantsData.filter((plant) => plant.id !== this.state.activePlant.id);
+    const filteredVideos = minVideoList.filter((video) => video.id !== this.state.maxVideoList.id);
+    //const mainVideos = maxVideoList.find((video) => video.id !== this.state.maxVideoList.id);
 
     // const { name, age, description, avatar: image } = this.state.activePlant;
     console.log(this.state);
     return (
       <div>
-        <Header />
-        <Main nextVideos={this.state.minVideoList} />
+        <Header mainVideo={this.state.maxVideoList} />
+        <Main nextVideos={filteredVideos} mainVideo={this.state.maxVideoList} handleVideoChange={this.handleVideoChange} />
       </div>
     );
   }

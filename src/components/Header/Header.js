@@ -2,11 +2,11 @@ import React from "react";
 import Hero from "../Hero/Hero";
 import Nav from "../Nav/Nav";
 
-function Header() {
+function Header({mainVideo}) {
   return (
     <header>
       <Nav />
-      <Hero />
+      <Hero mainVideo={mainVideo} />
     </header>
   );
 }

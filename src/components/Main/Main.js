@@ -4,15 +4,15 @@ import Form from "../Form/Form";
 import NextVideos from "../NextVideos/NextVideos";
 import VideoDetails from "../VideoDetails/VideoDetails";
 
-function Main({nextVideos}) {
+function Main({nextVideos, mainVideo, handleVideoChange}) {
   return (
     <main className="main">
       <section>
-        <VideoDetails />
+        <VideoDetails mainVideo={mainVideo}/>
         <Form />
-        <Comments />
+        <Comments mainVideo={mainVideo} />
       </section>
-      <NextVideos nextVideos={nextVideos} />
+      <NextVideos nextVideos={nextVideos} handleVideoChange={handleVideoChange}/>
     </main>
   );
 }

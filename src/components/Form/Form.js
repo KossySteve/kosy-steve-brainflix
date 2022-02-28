@@ -8,7 +8,7 @@ function Form() {
 
       <div className="form__container">
         <div className="img-frame">
-          <img className="img" src={avatarimg} alt="profile picture of user" />
+          <img className="img" src={avatarimg} alt="profile " />
         </div>
         <form className="form__box">
           <div className="form__row">
@@ -20,10 +20,9 @@ function Form() {
               placeholder="Add a new comment"
             />
           </div>
-
           <div className="form__row">
             <button className="btn" type="submit">
-              <img src={addComment} />
+              <img src={addComment} alt="comment icon" />
               <p>COMMENT</p>
               <p></p>
             </button>

@@ -21,12 +21,12 @@ function Nav() {
           <img
             className="nav__img"
             src={avatarimg}
-            alt="profile picture of user"
+            alt="profile"
           />
         </li>
         <li className="nav__list-item">
           <button className="nav__btn">
-            <img src={upload} />
+            <img src={upload} alt="icon"/>
             <p className="nav__btn-text">UPLOAD</p>
             <p></p>
           </button>
