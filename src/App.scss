@@ -9,8 +9,10 @@
   @include flexbox-settings(center, center) {
     flex-flow: column nowrap;
     @include tablet {
-      flex-flow: row nowrap;
-      justify-content: flex-start;
+      flex-direction: row;
+      justify-content: space-around;
+      box-sizing: border-box;
+      @include no-margin-padding;
     }
   }
   &__logo {
@@ -20,7 +22,7 @@
     @include no-margin-padding;
     margin-bottom: 0.5rem;
     @include tablet {
-      margin: 0 0 0 3rem;
+      margin: 0 0 0 1rem;
     }
     @include desktop {
       margin: 1.5rem 0 1.5rem 10rem;
@@ -28,6 +30,10 @@
   }
   &__img-frame {
     @include no-margin-padding;
+
+    @include tablet {
+      order: 3;
+    }
   }
 
   &__img {
@@ -36,6 +42,7 @@
     border-radius: 50%;
     object-fit: cover;
     text-align: center;
+
     @include tablet {
       width: 4.3rem;
       height: 4.3rem;
@@ -46,21 +53,15 @@
     @include flexbox-settings(space-between, center);
     flex-wrap: wrap;
     align-content: flex-start;
-    max-width: 52rem;
-    border: blue 5px solid;
     @include no-margin-padding;
     @include tablet {
-      // border: red 5px solid;
-      justify-content: space-evenly;
-      width: 22rem;
+      flex-wrap: nowrap;
     }
   }
   &__list-item {
     @include flexbox-settings(center, center);
-  
     @include tablet {
-      justify-content: flex-start;
-      // border: blue 5px solid;
+      justify-content: space-between;
     }
   }
   &__input {
@@ -70,58 +71,59 @@
     padding: 0.5rem;
     background-color: $sec-color-shade;
     border: 1px solid $sec-color-shade;
-    //resize: none;
     border-radius: 5px;
     @include tablet {
-      width: 70vw;
+      width: 25vw;
     }
     @include desktop {
-      width: 40vw;
+      width: 20vw;
     }
   }
   &__btn {
-    background-color: $pry-color-dark;
-    border: 2px solid $pry-color-dark ;
+    background-color: $pry-color-blue;
+    border: 2px solid $pry-color-blue;
+    @include flexbox-settings(space-between, center);
     border-radius: 4px;
-    padding: 1rem;
+    padding: 0.5rem;
     color: $pry-color-light;
     margin: 0.8rem 0;
     min-width: 90vw;
     @include mobile-label-buttons;
     @include tablet {
-      align-self: flex-end;
-      width: 15rem;
-      font-size: 1.5rem;
+      min-width: 10rem;
+      margin: 0 2rem;
     }
     @include desktop {
       width: 15rem;
     }
   }
-  &__link:hover,
-  &__link:active {
-    border-bottom: 4px solid white;
-    color: $pry-color-light;
-  }
-  &__link:link {
-    border-bottom: 4px solid $pry-color-dark;
+
+  &__btn-text {
+    @include no-margin-padding;
   }
 }
 
 .hero {
   height: 16rem;
-  border: green 5px solid;
   @include flexbox-settings(flex-start, center);
   flex-direction: column;
   @include tablet {
-    height: 30.5rem;
+    height: 30rem;
+    background-color: $sec-color-dark;
   }
   @include desktop {
-    height: 50rem;
+    height: 35rem;
   }
 
   &__video {
     width: 100%;
     height: 100%;
+    @include tablet {
+      width: 90%;
+    }
+    @include tablet {
+      width: 67%;
+    }
   }
   &__title {
     @include no-margin-padding;
@@ -139,121 +141,291 @@
   }
 }
 
+.main {
+  @include flexbox-settings(center, center);
+  flex-direction: column;
+  @include desktop {
+    flex-direction: row;
+    @include flexbox-settings(center, flex-start);
+  }
+}
 
 .form {
-  @include footer-setup;
   @include no-margin-padding;
-  border: red 5px solid;
-  padding: 0.5rem 1rem;
+
+  padding: 0 1rem;
+  @include tablet {
+    padding: 0 3.5rem;
+    margin: 2rem 0;
+  }
+  @include desktop {
+    padding: 0 0 0 10rem;
+  }
   &__title {
-    text-align: center;
+    color: $pry-color-shade;
+    @include no-margin-padding;
+    font-size: 20px;
+    padding: 0 0 0 5rem;
+    @include tablet {
+      font-size: 15px;
+      text-align: start;
+      margin: 0 auto;
+      padding: 0 0 0 5rem;
+    }
   }
   &__container {
     @include flexbox-settings(center, flex-start);
     @include no-margin-padding;
+    border-bottom: $pry-color-shade 1px solid;
+    @include tablet {
+      @include flexbox-settings(center, center);
+    }
   }
 
-  &__row {
-    @include flexbox-settings(center, flex-start);
-    flex-flow: column nowrap;
-    box-sizing: border-box;
-  }
-  &__label {
-    @include mobile-subheader-font;
-    color: $pry-color-shade;
-    margin: 1rem 0;
-  }
-  &__input {
-    font-size: 2rem;
+  &__box {
     width: 100%;
-    padding: 0.5rem;
+    @include flexbox-settings(center, stretch);
+    @include no-margin-padding;
+    box-sizing: border-box;
+    flex-flow: column nowrap;
+    @include tablet {
+      @include flexbox-settings(space-between, flex-start);
+      flex-flow: row nowrap;
+    }
+  }
+
+  &__input {
+    font-size: 1.2rem;
+    width: 100%;
+    height: 11rem;
+    padding: 0 4rem;
     background-color: $sec-color-shade;
     border: 1px solid $sec-color-shade;
     resize: none;
     border-radius: 5px;
     box-sizing: border-box;
-    display: none;
+    //display: none;
     @include tablet {
-      width: 70vw;
-      display: block;
+      @include no-margin-padding;
+      width: 50vw;
+      padding: 1.5rem 2rem;
+      height: 2.5rem;
+      // display: block;
     }
     @include desktop {
-      width: 40vw;
-    }
-  }
-
-  &__textarea {
-    @extend .form__input;
-    display: block;
-    padding: 1rem;
-    white-space: nowrap;
-    @include tablet {
-      display: none;
+      width: 30vw;
     }
   }
   .img-frame {
-    margin: 0 2rem;
+    margin: 0 2rem 0 0;
+    @include tablet {
+      margin: 1rem 2rem 2rem 0;
+    }
   }
   .img {
     width: 3.5rem;
     height: 3.5rem;
     border-radius: 50%;
     object-fit: cover;
-    @include tablet {
-      width: 4.3rem;
-      height: 4.3rem;
-    }
   }
 
   .btn {
-    background-color: $pry-color-dark;
-    border: 2px solid $pry-color-dark ;
+    background-color: $pry-color-blue;
+    border: 2px solid $pry-color-blue;
     border-radius: 4px;
-    padding: 1rem;
+    padding: 0 1rem;
     color: $pry-color-light;
-    margin: 2rem 0;
+    @include flexbox-settings(space-between, center);
+    margin: 1.5rem 0;
     width: 100%;
     @include mobile-label-buttons;
     @include tablet {
-      align-self: flex-end;
-      width: 15rem;
-      font-size: 1.5rem;
+      width: 20vw;
+      font-size: 1rem;
+      margin: 0;
     }
     @include desktop {
       width: 15rem;
     }
   }
-  &__title {
+}
+
+.video-details {
+  @include mobile-subheader-font {
+    font-weight: 400;
+  }
+  @include tablet {
+    @include flexbox-settings(space-between, center);
+    font-size: 1rem;
+  }
+  &__author {
+    font-weight: 700;
     @include tablet {
-      font-size: 2.7rem;
+      margin-right: 3rem;
     }
   }
-  &__error-signal {
-    border: 4px solid red;
+  &__likes {
+    @include tablet {
+      margin-left: 3rem;
+    }
+  }
+}
+
+.video-reactions {
+  @extend .video-details;
+  margin-right: 2.5rem;
+  @include tablet {
+    margin-right: 0;
   }
 }
 
 .video-info {
-  border: red 5px solid;
-  padding: 0 2rem;
-  &__title{
-    border: purple 5px solid;
+  padding: 1rem;
+  @include tablet {
+    padding: 1rem 3.5rem;
   }
-  &__details{
-    border: yellow 5px solid;
-    @include flexbox-settings(space-between, center)
+  @include desktop {
+    padding: 0 0 0 10rem;
   }
-  &__description{
-    border: orange 5px solid;
+  &__title {
+    border-bottom: $sec-color-shade 1px solid;
+    @include mobile-header-font;
+    @include no-margin-padding;
+    padding-bottom: 0.5rem;
+  }
+  &__details {
+    border-bottom: $sec-color-shade 1px solid;
+    @include flexbox-settings(space-between, center);
+  }
+  &__description {
     @include mobile-copy-font;
+    padding: 1rem 0;
+    @include tablet {
+      font-size: 1rem;
+    }
+  }
+  &__comment-count {
+    @extend .video-details__author;
+    font-size: larger;
+    margin: 0.5rem 0;
   }
 }
-.video-details {
-  border: rgb(21, 255, 0) 5px solid;
-} 
 
-.video-reactions {
-  border: #0059ff 5px solid;
-  margin-right: 2.5rem;
+.post-section {
+  @include no-margin-padding;
+  padding: 0 1rem;
+  @include tablet {
+    padding: 0 3.5rem;
+  }
+  @include desktop {
+    padding: 0 0 0 10rem;
+  }
 }
-             
+
+.post-container {
+  @include flexbox-settings(space-between, flex-start);
+  color: $pry-color-dark;
+  border-bottom: 1px solid $pry-color-shade;
+  @include no-margin-padding;
+  margin-bottom: 1rem;
+}
+
+.post {
+  @include flexbox-settings(space-between, space-around);
+  flex-direction: column;
+  @include no-margin-padding;
+
+  &__heading {
+    font-size: 1.2rem;
+  }
+  &__text {
+    font-size: 1.2rem;
+    @include no-margin-padding;
+  }
+
+  &__box {
+    @include flexbox-settings(space-between, center);
+  }
+
+  &__time {
+    color: $pry-color-shade;
+    font-size: 1.2rem;
+  }
+  &__image {
+    height: 60px;
+    width: 60px;
+    margin: 1rem 2rem 1rem 0;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    @include tablet {
+    }
+  }
+}
+
+.next-videos-section {
+  @include no-margin-padding;
+  width: 100%;
+  margin-bottom: 5rem;
+  border-left: $pry-color-shade 1px solid;
+
+  @include tablet {
+    padding: 0 3.5rem;
+  }
+  @include desktop {
+    padding: 0 0 0 1rem;
+  }
+}
+
+.next-videos-container {
+  @include flexbox-settings(flex-start, space-around);
+  flex-direction: column;
+  color: $pry-color-dark;
+  border-bottom: 1px solid $pry-color-shade;
+  width: 80%;
+  margin-left: 1rem;
+  @include tablet {
+    margin: 0 3.5rem;
+    width: 50%;
+  }
+  @include desktop {
+    @include no-margin-padding;
+    width: 100%;
+  }
+}
+
+.next-videos {
+  box-sizing: border-box;
+  width: 100%;
+  @include flexbox-settings(space-between, center);
+  &__box {
+    //border: green 5px solid;
+    @include no-margin-padding;
+    width: 50%;
+  }
+  &__heading {
+    font-size: 1.2rem;
+    @include no-margin-padding;
+    margin-bottom: 0.3rem;
+    &--grey {
+      color: grey;
+    }
+  }
+  &__text {
+    font-size: 1.2rem;
+    @include no-margin-padding;
+  }
+
+  &__frame {
+    width: 40%;
+    height: 12vh;
+    @include no-margin-padding;
+  }
+
+  &__screen {
+    width: 100%;
+    height: 100%;
+    border: 1px solid $pry-color-light;
+    border-radius: 10px;
+  }
+}
