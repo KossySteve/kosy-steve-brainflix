@@ -4,7 +4,7 @@ import Form from "../Form/Form";
 import NextVideos from "../NextVideos/NextVideos";
 import VideoDetails from "../VideoDetails/VideoDetails";
 
-function Main() {
+function Main({nextVideos}) {
   return (
     <main className="main">
       <section>
@@ -12,7 +12,7 @@ function Main() {
         <Form />
         <Comments />
       </section>
-      <NextVideos />
+      <NextVideos nextVideos={nextVideos} />
     </main>
   );
 }

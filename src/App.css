@@ -542,9 +542,15 @@ body {
 .next-videos {
   box-sizing: border-box;
   width: 100%;
+  margin-bottom: 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+@media screen and (min-width: 1280px) {
+  .next-videos {
+    width: 70%;
+  }
 }
 .next-videos__box {
   margin: 0;
@@ -560,10 +566,21 @@ body {
 .next-videos__heading--grey {
   color: grey;
 }
+@media screen and (min-width: 768px) {
+  .next-videos__heading {
+    font-size: 1rem;
+    overflow-wrap: break-word;
+  }
+}
 .next-videos__text {
   font-size: 1.2rem;
   margin: 0;
   padding: 0;
+}
+@media screen and (min-width: 768px) {
+  .next-videos__text {
+    font-size: 1rem;
+  }
 }
 .next-videos__frame {
   width: 40%;

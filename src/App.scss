@@ -397,9 +397,12 @@
 .next-videos {
   box-sizing: border-box;
   width: 100%;
+  margin-bottom: 1.5rem;
   @include flexbox-settings(space-between, center);
+  @include desktop {
+    width: 70%;
+  }
   &__box {
-    //border: green 5px solid;
     @include no-margin-padding;
     width: 50%;
   }
@@ -410,10 +413,18 @@
     &--grey {
       color: grey;
     }
+    @include tablet {
+      font-size: 1rem;
+      overflow-wrap: break-word;
+    }
   }
   &__text {
     font-size: 1.2rem;
     @include no-margin-padding;
+    @include tablet {
+      font-size: 1rem;
+
+    }
   }
 
   &__frame {

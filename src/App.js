@@ -16,7 +16,7 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <Main />
+        <Main nextVideos={this.state.minVideoList} />
       </div>
     );
   }
