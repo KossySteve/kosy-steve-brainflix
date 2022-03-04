@@ -2,12 +2,13 @@ import React from "react";
 import upload from "../../assets/icons/upload.svg";
 import logo from "../../assets/logo/BrainFlix-logo.svg";
 import avatarimg from "../../assets/images/Mohan-muruge.jpg";
+import { Link } from "react-router-dom";
 function Nav() {
   return (
     <nav className="nav">
-      <a href="/">
+      <Link to="/">
         <img src={logo} className="nav__logo" alt="Brainflix Logo" />
-      </a>
+      </Link>
       <ul className="nav__list">
         <li className="nav__list-item">
           <input
