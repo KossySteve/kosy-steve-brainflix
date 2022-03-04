@@ -1,4 +1,4 @@
-export const maxVideoList = [
+[
   {
     "title": "BMX Rampage: 2021 Highlights",
     "channel": "Red Cow",

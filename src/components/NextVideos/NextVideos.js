@@ -12,15 +12,12 @@ function NextVideos({ nextVideos, handleVideoChange }) {
             className="next-videos"
             onClick={() => handleVideoChange(video.id)}
           >
-            <div className="next-videos__frame">
-              <video
+            <div className="next-videos__frame" >
+              <img
                 className="next-videos__screen"
-                poster={video.image}
-                controls
-              >
-                <source src="" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+                src={video.image}
+
+              />
             </div>
             <div className="next-videos__box">
               <h3 className="next-videos__heading">{video.title}</h3>

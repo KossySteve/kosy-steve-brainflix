@@ -1,7 +1,7 @@
 import { Component } from "react";
 import "./App.css";
-import { maxVideoList } from "./data/video-details";
-import { minVideoList } from "./data/videos";
+import maxVideoList from "./data/video-details.json";
+import minVideoList from "./data/videos.json";
 import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
 
@@ -10,7 +10,7 @@ class App extends Component {
 
 
   handleVideoChange = (id) => {
-    let newMain = this.state.minVideoList.find(video => video.id === id);
+    let newMain = maxVideoList.find(video => video.id === id);
     this.setState({ maxVideoList: newMain })
     console.log("Hello")
   }
