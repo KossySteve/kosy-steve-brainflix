@@ -5,16 +5,16 @@ import Header from "./components/Header/Header";
 import VideoUpload from './pages/VideoUpload/VideoUpload';
 import Home from './pages/Home/Home';
 
-export const API_URL = 'https://project-2-api.herokuapp.com';
+export const API_URL = 'https://project-2-api.herokuapp.com/videos';
 
 function App() {
   return (
     <BrowserRouter>
-      <Header />
+      <Header/>
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/quote" component={VideoUpload} />
-        <Route path="/videos/:videoId" component={Home} />
+        <Route path="/:videoId" component={Home} />
       </Switch>
     </BrowserRouter>
   );

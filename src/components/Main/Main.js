@@ -1,18 +1,22 @@
 import React from "react";
 import Comments from "../Comments/Comments";
 import Form from "../Form/Form";
+import Hero from "../Hero/Hero";
 import NextVideos from "../NextVideos/NextVideos";
 import VideoDetails from "../VideoDetails/VideoDetails";
 
-function Main({nextVideos, mainVideo, handleVideoChange}) {
+function Main({ nextVideos, mainVideo }) {
   return (
-    <main className="main">
-      <section>
-        <VideoDetails mainVideo={mainVideo}/>
-        <Form />
-        <Comments mainVideo={mainVideo} />
+    <main>
+      <Hero mainVideo={mainVideo} />
+      <section className="main">
+        <section>
+          <VideoDetails mainVideo={mainVideo} />
+          <Form />
+          <Comments mainVideo={mainVideo} />
+        </section>
+        <NextVideos nextVideos={nextVideos} />
       </section>
-      <NextVideos nextVideos={nextVideos} handleVideoChange={handleVideoChange}/>
     </main>
   );
 }
