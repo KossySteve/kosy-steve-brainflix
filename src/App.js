@@ -5,6 +5,8 @@ import Header from "./components/Header/Header";
 import VideoUpload from './pages/VideoUpload/VideoUpload';
 import Home from './pages/Home/Home';
 
+export const API_URL = 'https://project-2-api.herokuapp.com';
+
 function App() {
   return (
     <BrowserRouter>
@@ -12,10 +14,10 @@ function App() {
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/quote" component={VideoUpload} />
-        <Route path="/videos:id" component={Home} />
+        <Route path="/videos/:videoId" component={Home} />
       </Switch>
     </BrowserRouter>
-  )
+  );
 }
 
 export default App
