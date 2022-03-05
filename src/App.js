@@ -1,33 +1,21 @@
-import { Component } from "react";
+import React from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import "./App.css";
-import maxVideoList from "./data/video-details.json";
-import minVideoList from "./data/videos.json";
 import Header from "./components/Header/Header";
-import Main from "./components/Main/Main";
+import VideoUpload from './pages/VideoUpload/VideoUpload';
+import Home from './pages/Home/Home';
 
-class App extends Component {
-  state = { maxVideoList: maxVideoList[0], minVideoList: minVideoList };
-
-
-  handleVideoChange = (id) => {
-    let newMain = maxVideoList.find(video => video.id === id);
-    this.setState({ maxVideoList: newMain })
-    console.log("Hello")
-  }
-
-  render() {
-    const filteredVideos = minVideoList.filter((video) => video.id !== this.state.maxVideoList.id);
-    //const mainVideos = maxVideoList.find((video) => video.id !== this.state.maxVideoList.id);
-
-    // const { name, age, description, avatar: image } = this.state.activePlant;
-    console.log(this.state);
-    return (
-      <div>
-        <Header mainVideo={this.state.maxVideoList} />
-        <Main nextVideos={filteredVideos} mainVideo={this.state.maxVideoList} handleVideoChange={this.handleVideoChange} />
-      </div>
-    );
-  }
+function App() {
+  return (
+    <BrowserRouter>
+      <Header />
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/quote" component={VideoUpload} />
+        <Route path="/videos:id" component={Home} />
+      </Switch>
+    </BrowserRouter>
+  )
 }
 
-export default App;
+export default App
