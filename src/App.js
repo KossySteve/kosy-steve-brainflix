@@ -13,7 +13,7 @@ function App() {
       <Header/>
       <Switch>
         <Route path="/" exact component={Home} />
-        <Route path="/quote" component={VideoUpload} />
+        <Route path="/upload" component={VideoUpload} />
         <Route path="/:videoId" component={Home} />
       </Switch>
     </BrowserRouter>
