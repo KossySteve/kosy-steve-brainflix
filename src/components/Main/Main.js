@@ -11,7 +11,7 @@ function Main({ nextVideos, mainVideo }) {
     <main>
       <Hero mainVideo={mainVideo} />
       <section className="main">
-        <section>
+        <section className="main__details">
           <VideoDetails mainVideo={mainVideo} />
           <Form />
           <Comments mainVideo={mainVideo} />

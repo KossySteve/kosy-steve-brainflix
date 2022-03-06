@@ -1,4 +1,5 @@
 import React from "react";
+import './Comments.scss'
 
 function Comments({ mainVideo }) {
   return (

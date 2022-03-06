@@ -1,0 +1,66 @@
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+
+.video-details {
+  @include mobile-subheader-font {
+    font-weight: 400;
+  }
+  @include tablet {
+    @include flexbox-settings(space-between, center);
+    font-size: 1rem;
+  }
+  &__author {
+    font-weight: 700;
+    @include tablet {
+      margin-right: 3rem;
+    }
+  }
+  &__likes {
+    @include tablet {
+      margin-left: 3rem;
+    }
+  }
+}
+
+.video-reactions {
+  @extend .video-details;
+  margin-right: 2.5rem;
+  @include tablet {
+    margin-right: 0;
+  }
+}
+
+.video-info {
+  padding: 1rem;
+  @include tablet {
+    padding: 1rem 3.5rem;
+  }
+  @include desktop {
+    padding: 0 0 0 10rem;
+  }
+  &__title {
+    border-bottom: $sec-color-shade 1px solid;
+    @include mobile-header-font;
+    @include no-margin-padding;
+    padding-bottom: 0.5rem;
+  }
+  &__details {
+    border-bottom: $sec-color-shade 1px solid;
+    @include flexbox-settings(space-between, center);
+  }
+  &__description {
+    @include mobile-copy-font;
+    padding: 1rem 0.5rem 1rem 0;
+    @include tablet {
+      font-size: 1rem;
+    }
+  }
+  &__comment-count {
+    @extend .video-details__author;
+    font-size: larger;
+    margin: 0.5rem 0;
+  }
+}

@@ -4,28 +4,24 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/typography" as *;
 
-
 .next-videos-section {
   @include no-margin-padding;
   width: 100%;
   margin-bottom: 5rem;
   border-left: $pry-color-shade 1px solid;
-
   @include tablet {
     padding: 0 3.5rem;
   }
   @include desktop {
     padding: 0 0 0 1rem;
-    margin: 0 0 5rem 2rem;
+    margin: 0 0 5rem 0.15rem;
   }
 }
 
 .next-videos-container {
-  border: red solid 5px;
   @include flexbox-settings(flex-start, space-around);
   flex-direction: column;
   color: $pry-color-dark;
-  border-bottom: 1px solid $pry-color-shade;
   width: 80%;
   margin-left: 1rem;
   @include tablet {
@@ -39,15 +35,12 @@
 }
 
 .next-videos {
-  border: blue solid 5px;
   box-sizing: border-box;
-  max-width: 40rem;
+  max-width: 24rem;
   margin-bottom: 1.5rem;
   @include flexbox-settings(space-between, center);
   flex-flow: row nowrap;
-  @include desktop {
-  width: 70%;
-  }
+
   &__box {
     @include no-margin-padding;
     width: 50%;
@@ -58,6 +51,7 @@
     margin-bottom: 0.3rem;
     &--grey {
       color: grey;
+      font-size: 1.2rem;
     }
     @include tablet {
       font-size: 1rem;
@@ -73,11 +67,9 @@
   }
 
   &__frame {
-    border: greenyellow solid 5px;
-    width: 150px;
-    height: 100px;
+    width: 140px;
+    height: 90px;
     @include no-margin-padding;
-    
   }
 
   &__screen {

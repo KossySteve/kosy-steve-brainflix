@@ -1,0 +1,104 @@
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+
+.form {
+  @include no-margin-padding;
+
+  padding: 0 1rem;
+  @include tablet {
+    padding: 0 3.5rem;
+    margin: 2rem 0;
+  }
+  @include desktop {
+    padding: 0 0 0 10rem;
+  }
+  &__title {
+    color: $pry-color-shade;
+    @include no-margin-padding;
+    font-size: 20px;
+    padding: 0 0 0 5rem;
+    @include tablet {
+      font-size: 15px;
+      text-align: start;
+      margin: 0 auto;
+      padding: 0 0 0 5rem;
+    }
+  }
+  &__container {
+    @include flexbox-settings(center, flex-start);
+    @include no-margin-padding;
+    border-bottom: $pry-color-shade 1px solid;
+    @include tablet {
+      @include flexbox-settings(center, center);
+    }
+  }
+
+  &__box {
+    width: 100%;
+    @include flexbox-settings(center, stretch);
+    @include no-margin-padding;
+    box-sizing: border-box;
+    flex-flow: column nowrap;
+    @include tablet {
+      @include flexbox-settings(space-between, flex-start);
+      flex-flow: row nowrap;
+    }
+  }
+
+  &__input {
+    font-size: 1.2rem;
+    width: 100%;
+    height: 11rem;
+    padding: 0 4rem;
+    background-color: $sec-color-shade;
+    border: 1px solid $sec-color-shade;
+    resize: none;
+    border-radius: 5px;
+    box-sizing: border-box;
+    @include tablet {
+      @include no-margin-padding;
+      width: 50vw;
+      padding: 1.5rem 2rem;
+      height: 2.5rem;
+    }
+    @include desktop {
+      width: 30vw;
+    }
+  }
+  .img-frame {
+    margin: 0 2rem 0 0;
+    @include tablet {
+      margin: 1rem 2rem 2rem 0;
+    }
+  }
+  .img {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .btn {
+    background-color: $pry-color-blue;
+    border: 2px solid $pry-color-blue;
+    border-radius: 4px;
+    padding: 0 1rem;
+    color: $pry-color-light;
+    @include flexbox-settings(space-between, center);
+    margin: 1.5rem 0;
+    width: 100%;
+    @include mobile-label-buttons;
+    @include tablet {
+      width: 20vw;
+      font-size: 0.85rem;
+      margin: 0;
+    }
+    @include desktop {
+      width: 10rem;
+      margin: 0 1rem 0 5rem;
+    }
+  }
+}

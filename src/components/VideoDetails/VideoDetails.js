@@ -1,6 +1,7 @@
 import React from "react";
 import likes from "../../assets/icons/likes.svg";
 import views from "../../assets/icons/views.svg";
+import './VideoDetails.scss'
 function VideoDetails({mainVideo}) {
   return (
     <div className="video-info">

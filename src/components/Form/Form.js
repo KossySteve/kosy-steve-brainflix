@@ -1,6 +1,7 @@
 import React from "react";
 import avatarimg from "../../assets/images/Mohan-muruge.jpg";
 import addComment from "../../assets/icons/add_comment.svg";
+import './Form.scss'
 function Form() {
   return (
     <section className="form">
