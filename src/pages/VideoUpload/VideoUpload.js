@@ -3,48 +3,25 @@ import bikeImg from "../../assets/images/Upload-video-preview.jpg";
 import Button from "../../components/Button/Button";
 import "./VideoUpload.scss";
 import publish from "../../assets/icons/publish.svg";
+import UploadHero from "../../components/UploadHero/UploadHero";
+import FormInput from "../../components/FormInput/FormInput";
 
 export class VideoUpload extends Component {
  state = {videoTitle: "", videoDescription: ""}
-  uploadVideo = ()=> {}
+  handleChange = ()=> {}
   render() {
     return (
       <main className="main-section">
         <h1 className="main-section__title">Upload Video</h1>
-        <section className="hero-container">
-          <h4 className="hero__heading">VIDEO THUMBNAIL</h4>
-          <img className="hero_container__img" src={bikeImg}></img>
-        </section>
+       <UploadHero />
         <section>
-          <form className="upload-form-container">
-            <div className="upload-form">
-              <label htmlFor="videoTitle" className="upload-form__label">
-                TITLE YOUR VIDEO
-              </label>
-              <input
-                className="upload-form__input"
-                type="text"
-                id="videoTitle"
-                value={this.state}
-                onChange={this.uploadVideo}
-                name="videoTitle"
-                placeholder="Add a new comment"
-              />
-            </div>
-            <div className="upload-form">
-              <label htmlFor="description" className="upload-form__label">
-                ADD A VIDEO DESCRIPTION
-              </label>
-              <input
-                className="upload-form__input--lg"
-                type="text"
-                id="description"
-                value={this.state}
-                onChange={this.uploadVideo}
-                name="description"
-                placeholder="Add a description to your video"
-              />
-            </div>
+          <form onSubmit={this.handleSubmit} className="upload-form-container">
+            
+      <FormInput labeltext={"ADD A VIDEO DESCRIPTION"} className={"upload-form__input"} onChange={this.handleChange} id={"description"} value={this.state} placeholder={"Add a description to your video"}/>
+           
+           
+            <FormInput className={"upload-form__input upload-form__input--lg"}/>
+           
             <div className="btn-container">
               <Button src={publish} className={"upload-btn"} text={"PUBLISH"} />
             </div>
