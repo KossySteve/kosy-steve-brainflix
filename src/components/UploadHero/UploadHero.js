@@ -1,5 +1,6 @@
 import React from 'react'
-
+import bikeImg from "../../assets/images/Upload-video-preview.jpg";
+import './UploadHero.scss'
 function UploadHero() {
   return (
   <section className="hero-container">

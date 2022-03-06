@@ -1,0 +1,23 @@
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+
+.hero-container {
+  background-color: white;
+  padding-bottom: 1rem;
+}
+.hero_container__img {
+  width: 100%;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+
+.hero__heading {
+  color: $pry-color-shade;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin: 0;
+  padding: 0 rem 0;
+}
