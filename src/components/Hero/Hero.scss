@@ -6,11 +6,11 @@
 
 .hero {
   height: 16rem;
+  background-color: $sec-color-dark;
   @include flexbox-settings(flex-start, center);
   flex-direction: column;
   @include tablet {
     height: 30rem;
-    background-color: $sec-color-dark;
   }
   @include desktop {
     height: 35rem;

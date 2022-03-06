@@ -10,10 +10,11 @@ export class Home extends Component {
     //sets currentVideoId to url parameter or first video in video list
     let currentVideoId = this.props.match.params.videoId;
 
-    //just putting http://localhost:3000/ in the browser
+    //if user inputs home url in the browser
     if (!currentVideoId) {
       const videoIds = this.state.videos.map((video) => video.id);
       //const randomIndex = Math.floor(Math.random() * videoIds.length);
+      //first video in videolist is selected
       currentVideoId = videoIds[0];
     }
     //sets selectedVideo to the first obj in array
@@ -26,7 +27,7 @@ export class Home extends Component {
         console.log(this.state.selectedVideo.comments);
       });
   };
-  // after first render set state to api array & obj.
+  // after first render set state to api response data.
   componentDidMount() {
     axios
       .get(`${API_URL}?api_key=65464bbf-2db6-4b96-86d5-1bf19bb9249b`)
@@ -36,12 +37,14 @@ export class Home extends Component {
   }
 
   componentDidUpdate(prevProps) {
+    //prevent loop on same props video details as url path changes with clicking of nextVideos link 
     if (prevProps.match.params.videoId !== this.props.match.params.videoId) {
       this.fetchVideoDetails();
     }
   }
 
   render() {
+    //loading page to check empty state values before mounting
     if (!this.state.videos.length) {
       return <h2>Loading...</h2>;
     }
@@ -52,14 +55,7 @@ export class Home extends Component {
       : this.state.videos;
 
     return (
-      //   <main className="main">
-      //     {this.state.selectedVideo && (
-      //       <Main
-      //         mainVideo={this.state.selectedVideo}
-      //         nextVideos={filteredNextVideos}
-      //       />
-      //     )}
-      //   </main>
+      //check if a particular video has been selected by user before display
       <section>
         {this.state.selectedVideo && (
           <Main

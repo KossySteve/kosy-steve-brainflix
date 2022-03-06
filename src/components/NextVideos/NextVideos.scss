@@ -44,14 +44,15 @@
   &__box {
     @include no-margin-padding;
     width: 50%;
+    font-size: 1rem;
   }
   &__heading {
-    font-size: 1.2rem;
+   
     @include no-margin-padding;
     margin-bottom: 0.3rem;
     &--grey {
       color: grey;
-      font-size: 1.2rem;
+      font-size: 1rem;
     }
     @include tablet {
       font-size: 1rem;
@@ -59,7 +60,7 @@
     }
   }
   &__text {
-    font-size: 1.2rem;
+  
     @include no-margin-padding;
     @include tablet {
       font-size: 1rem;

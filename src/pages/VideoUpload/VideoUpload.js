@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./VideoUpload.scss";
 import UploadHero from "../../components/UploadHero/UploadHero";
 import UploadForm from "../../components/UploadForm/UploadForm";
 
