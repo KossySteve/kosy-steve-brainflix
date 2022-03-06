@@ -1,21 +1,22 @@
 import React from "react";
 
-function FormInput({className}) {
+function FormInput({className, labeltext, onChange, id, value, placeholder}) {
   return (
     <div className="upload-form">
-      <label htmlFor="videoTitle" className="upload-form__label">
-        TITLE YOUR VIDEO
+      <label htmlFor={id} className="upload-form__label">
+        {labeltext}
       </label>
       <input
         className={className}
         type="text"
-        id="videoTitle"
-        value={this.state}
-        onChange={this.handleChange}
-        name="videoTitle"
-        placeholder="Add a new comment"
+        id={id}
+        value={value}
+        onChange={onChange}
+        name={id}
+        placeholder={placeholder}
       />
     </div>
+
   );
 }
 
