@@ -4,7 +4,8 @@ import Header from "./components/Header/Header";
 import VideoUpload from './pages/VideoUpload/VideoUpload';
 import Home from './pages/Home/Home';
 
-export const API_URL = 'https://project-2-api.herokuapp.com/videos';
+export const apiUrl = (end_point) =>`https://project-2-api.herokuapp.com/videos/${end_point}?api_key=65464bbf-2db6-4b96-86d5-1bf19bb9249b`;
+
 
 function App() {
   return (

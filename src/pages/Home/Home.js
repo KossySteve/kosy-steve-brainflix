@@ -1,10 +1,16 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { API_URL } from "../../App";
+import { apiUrl } from "../../App";
 import Main from "../../components/Main/Main";
 
 export class Home extends Component {
   state = { videos: [], selectedVideo: null };
+
+  getVideo = (apiCall, stateProp, displayfxn) => {
+    axios.get(apiCall).then(({ data }) => {
+      this.setState({ [stateProp]: data }, displayfxn);
+    });
+  };
 
   fetchVideoDetails = () => {
     //sets currentVideoId to url parameter or first video in video list
@@ -18,30 +24,43 @@ export class Home extends Component {
       currentVideoId = videoIds[0];
     }
     //sets selectedVideo to the first obj in array
-    axios
-      .get(
-        `${API_URL}/${currentVideoId}?api_key=65464bbf-2db6-4b96-86d5-1bf19bb9249b`
-      )
-      .then(({ data }) => {
-        this.setState({ selectedVideo: data });
-        console.log(this.state.selectedVideo.comments);
-      });
+    // axios
+    //   .get())
+    //   .then(({ data }) => {
+    //     this.setState({ selectedVideo: data });
+    //     console.log(this.state.selectedVideo.comments);
+    //   });
+    this.getVideo(apiUrl(currentVideoId), "selectedVideo");
   };
   // after first render set state to api response data.
   componentDidMount() {
-    axios
-      .get(`${API_URL}?api_key=65464bbf-2db6-4b96-86d5-1bf19bb9249b`)
-      .then(({ data }) => {
-        this.setState({ videos: data }, this.fetchVideoDetails);
-      });
+    // axios
+    //   .get(apiUrl(""))
+    //   .then(({ data }) => {
+    //     this.setState({ videos: data }, this.fetchVideoDetails);
+    //   });
+    this.getVideo(apiUrl(""), "videos", this.fetchVideoDetails);
   }
 
   componentDidUpdate(prevProps) {
-    //prevent loop on same props video details as url path changes with clicking of nextVideos link 
+    //prevent loop on same props video details as url path changes with clicking of nextVideos link
     if (prevProps.match.params.videoId !== this.props.match.params.videoId) {
       this.fetchVideoDetails();
     }
   }
+
+  commentHandler = (id, comment) => {
+
+    let reqOptions = {
+      url: apiUrl(`${id}/comments`),
+      method: "POST",
+      body: JSON.stringify(comment),
+    }
+    axios.request(reqOptions).then(function (response) {
+      console.log(response.data);
+      this.getVideo(apiUrl(id), "selectedVideo");
+    });  
+  };
 
   render() {
     //loading page to check empty state values before mounting
@@ -61,6 +80,7 @@ export class Home extends Component {
           <Main
             mainVideo={this.state.selectedVideo}
             nextVideos={filteredNextVideos}
+            commentHandler={this.commentHandler}
           />
         )}
       </section>
