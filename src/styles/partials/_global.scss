@@ -8,6 +8,9 @@ body {
   @include no-margin-padding;
   font-family: 'Avenir';
 }
+a {
+  text-decoration: none;
+}
 
 .nav {
   padding: 1rem 2rem 0;

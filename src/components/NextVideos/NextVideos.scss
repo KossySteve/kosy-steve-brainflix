@@ -21,6 +21,7 @@
 }
 
 .next-videos-container {
+  border: red solid 5px;
   @include flexbox-settings(flex-start, space-around);
   flex-direction: column;
   color: $pry-color-dark;
@@ -38,12 +39,14 @@
 }
 
 .next-videos {
+  border: blue solid 5px;
   box-sizing: border-box;
-  width: 100%;
+  max-width: 40rem;
   margin-bottom: 1.5rem;
   @include flexbox-settings(space-between, center);
+  flex-flow: row nowrap;
   @include desktop {
-    width: 70%;
+  width: 70%;
   }
   &__box {
     @include no-margin-padding;
@@ -70,9 +73,11 @@
   }
 
   &__frame {
-    width: 40%;
-    height: 12vh;
+    border: greenyellow solid 5px;
+    width: 150px;
+    height: 100px;
     @include no-margin-padding;
+    
   }
 
   &__screen {
@@ -80,5 +85,6 @@
     height: 100%;
     border: 1px solid $pry-color-light;
     border-radius: 10px;
+    object-fit: cover;
   }
 }

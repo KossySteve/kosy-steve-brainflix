@@ -17,6 +17,9 @@ export class VideoUpload extends Component {
     this.formNotValid()
       ? alert("Failed to upload, complete form")
       : alert("Upload was successful");
+    this.setState({ videoTitle: "", videoDescription: "" }, 
+    ()=>this.props.history.push("/")
+    );
   };
   render() {
     return (
