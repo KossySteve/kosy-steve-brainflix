@@ -3,6 +3,8 @@ import upload from "../../assets/icons/upload.svg";
 import logo from "../../assets/logo/BrainFlix-logo.svg";
 import avatarimg from "../../assets/images/Mohan-muruge.jpg";
 import { Link } from "react-router-dom";
+import Button from "../Button/Button";
+import searchIcon from '../../assets/icons/search.svg'
 function Nav() {
   return (
     <nav className="nav">
@@ -10,7 +12,8 @@ function Nav() {
         <img src={logo} className="nav__logo" alt="Brainflix Logo" />
       </Link>
       <ul className="nav__list">
-        <li className="nav__list-item">
+        <li className="nav__list-item nav__list-item--input">
+          <div><img className="nav__btn-icon" src={searchIcon} /></div>
           <input
             className="nav__input"
             type="text"
@@ -26,11 +29,7 @@ function Nav() {
           />
         </li>
         <li className="nav__list-item">
-          <button className="nav__btn">
-            <img src={upload} alt="icon"/>
-            <p className="nav__btn-text">UPLOAD</p>
-            <p></p>
-          </button>
+          <Button src={upload} className={"nav__btn"} text={"UPLOAD"} />
         </li>
       </ul>
     </nav>

@@ -4,6 +4,7 @@ import Form from "../Form/Form";
 import Hero from "../Hero/Hero";
 import NextVideos from "../NextVideos/NextVideos";
 import VideoDetails from "../VideoDetails/VideoDetails";
+import './Main.scss'
 
 function Main({ nextVideos, mainVideo }) {
   return (

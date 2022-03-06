@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { API_URL } from "../../App";
-import NextVideos from "../../components/NextVideos/NextVideos";
-
 import Main from "../../components/Main/Main";
-import Hero from "../../components/Hero/Hero";
 
 export class Home extends Component {
   state = { videos: [], selectedVideo: null };
@@ -38,11 +35,11 @@ export class Home extends Component {
       });
   }
 
-    componentDidUpdate(prevProps) {
-      if (prevProps.match.params.videoId !== this.props.match.params.videoId) {
-        this.fetchVideoDetails();
-      }
+  componentDidUpdate(prevProps) {
+    if (prevProps.match.params.videoId !== this.props.match.params.videoId) {
+      this.fetchVideoDetails();
     }
+  }
 
   render() {
     if (!this.state.videos.length) {
@@ -64,7 +61,6 @@ export class Home extends Component {
       //     )}
       //   </main>
       <section>
-       
         {this.state.selectedVideo && (
           <Main
             mainVideo={this.state.selectedVideo}
