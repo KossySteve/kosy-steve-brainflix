@@ -21,7 +21,7 @@ function Nav() {
             type="text"
             name="search"
             placeholder="Search"
-          />
+          /> 
         </li>
         <li className="nav__list-item nav__img-frame">
           <img className="nav__img" src={avatarimg} alt="profile" />
