@@ -5,13 +5,20 @@
 @use "../../styles/partials/typography" as *;
 
 .hero-container {
-  background-color: white;
+  background-color: $pry-color-light;
   padding-bottom: 1rem;
+  @include tablet {
+    width: 50vw;
+  }
+  @include desktop {
+    width: 30vw;
+   }
 }
 .hero_container__img {
   width: 100%;
-  border: 1px solid white;
+  border: 1px solid $pry-color-light;
   border-radius: 10px;
+  
 }
 
 .hero__heading {

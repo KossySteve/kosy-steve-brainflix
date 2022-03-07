@@ -19,26 +19,16 @@ export class Home extends Component {
     //if user inputs home url in the browser
     if (!currentVideoId) {
       const videoIds = this.state.videos.map((video) => video.id);
-      //const randomIndex = Math.floor(Math.random() * videoIds.length);
+
       //first video in videolist is selected
       currentVideoId = videoIds[0];
     }
     //sets selectedVideo to the first obj in array
-    // axios
-    //   .get())
-    //   .then(({ data }) => {
-    //     this.setState({ selectedVideo: data });
-    //     console.log(this.state.selectedVideo.comments);
-    //   });
+
     this.getVideo(apiUrl(currentVideoId), "selectedVideo");
   };
   // after first render set state to api response data.
   componentDidMount() {
-    // axios
-    //   .get(apiUrl(""))
-    //   .then(({ data }) => {
-    //     this.setState({ videos: data }, this.fetchVideoDetails);
-    //   });
     this.getVideo(apiUrl(""), "videos", this.fetchVideoDetails);
   }
 
@@ -50,35 +40,16 @@ export class Home extends Component {
   }
 
   commentHandler = (id, comment) => {
-    console.log(id, JSON.stringify(comment));
-    // axios
-    //   .post(
-    //     `https://project-2-api.herokuapp.com/videos/${id}/comments?api_key=65464bbf-2db6-4b96-86d5-1bf19bb9249b`,
-    //     JSON.stringify(comment)
-    //   )
-    //   .then((response) => {
-    //     console.log(response.data);
-    //     this.getVideo(apiUrl(id), "selectedVideo");
-    //   });
+    axios
+      .post(apiUrl(`${id}/comments`), JSON.stringify(comment))
+      .then(function (response) {
+        console.log(response);
 
-    let headersList = {
-      "Accept": "*/*",
-      "User-Agent": "Thunder Client (http://localhost:3001)",
-      "Content-Type": "application/json" 
-     }
-     
-     let bodyContent = JSON.stringify({"name": "Kossy1", "comment":"thank you1"});
-     
-     let reqOptions = {
-       url: apiUrl(`${id}/comments`),
-       method: "POST",
-       headers: headersList,
-       body: bodyContent,
-     }
-     
-     axios.request(reqOptions).then(function (response) {
-       console.log(response.data);
-     })
+        this.getVideo(apiUrl(id), "selectedVideo");
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
 
   render() {
