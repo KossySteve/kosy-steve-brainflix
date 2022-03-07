@@ -8,16 +8,6 @@
   padding: 1.3rem;
   border-top: 1px solid $pry-color-shade;
 }
-// remember to isolate Hero
-.hero-container {
-  background-color:  $pry-color-light;
-  padding-bottom: 1rem;
-}
-.hero_container__img {
-  width: 100%;
-  border: 1px solid $pry-color-light;
-  border-radius: 10px;
-}
 
 .main-section__title {
   padding: 0.2rem 0;
@@ -47,12 +37,10 @@
 
 .upload-form__input-box {
   @include desktop {
-    border: red 5px solid;
-   width: 65vw;
+    width: 65vw;
   }
 }
 .upload-form {
-  // border: green 5px solid;
   box-sizing: border-box;
   display: flex;
   flex-flow: column nowrap;
@@ -128,7 +116,7 @@
     @include flexbox-settings(center, center);
     background-color: $pry-color-light;
     color: $pry-color-blue;
-   border: 2px solid $pry-color-light;
+    border: 2px solid $pry-color-light;
     padding: 1rem;
     @include tablet {
       padding: 1rem 5rem;
