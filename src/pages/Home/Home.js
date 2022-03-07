@@ -50,16 +50,35 @@ export class Home extends Component {
   }
 
   commentHandler = (id, comment) => {
+    console.log(id, JSON.stringify(comment));
+    // axios
+    //   .post(
+    //     `https://project-2-api.herokuapp.com/videos/${id}/comments?api_key=65464bbf-2db6-4b96-86d5-1bf19bb9249b`,
+    //     JSON.stringify(comment)
+    //   )
+    //   .then((response) => {
+    //     console.log(response.data);
+    //     this.getVideo(apiUrl(id), "selectedVideo");
+    //   });
 
-    let reqOptions = {
-      url: apiUrl(`${id}/comments`),
-      method: "POST",
-      body: JSON.stringify(comment),
-    }
-    axios.request(reqOptions).then(function (response) {
-      console.log(response.data);
-      this.getVideo(apiUrl(id), "selectedVideo");
-    });  
+    let headersList = {
+      "Accept": "*/*",
+      "User-Agent": "Thunder Client (http://localhost:3001)",
+      "Content-Type": "application/json" 
+     }
+     
+     let bodyContent = JSON.stringify({"name": "Kossy1", "comment":"thank you1"});
+     
+     let reqOptions = {
+       url: apiUrl(`${id}/comments`),
+       method: "POST",
+       headers: headersList,
+       body: bodyContent,
+     }
+     
+     axios.request(reqOptions).then(function (response) {
+       console.log(response.data);
+     })
   };
 
   render() {

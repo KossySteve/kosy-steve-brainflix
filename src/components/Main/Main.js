@@ -13,7 +13,7 @@ function Main({ nextVideos, mainVideo, commentHandler }) {
       <section className="main">
         <section className="main__details">
           <VideoDetails mainVideo={mainVideo} />
-          <Form commentHandler={commentHandler}/>
+          <Form commentHandler={commentHandler} mainVideo={mainVideo}/>
           <Comments mainVideo={mainVideo} />
         </section>
         <NextVideos nextVideos={nextVideos} />
