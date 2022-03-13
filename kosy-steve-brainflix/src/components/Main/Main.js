@@ -6,7 +6,7 @@ import NextVideos from "../NextVideos/NextVideos";
 import VideoDetails from "../VideoDetails/VideoDetails";
 import './Main.scss'
 
-function Main({ nextVideos, mainVideo, commentHandler }) {
+function Main({ nextVideos, mainVideo, commentHandler, deleteCommentHandler }) {
   return (
     <main>
       <Hero mainVideo={mainVideo} />
@@ -14,7 +14,7 @@ function Main({ nextVideos, mainVideo, commentHandler }) {
         <section className="main__details">
           <VideoDetails mainVideo={mainVideo} />
           <Form commentHandler={commentHandler} mainVideo={mainVideo}/>
-          <Comments mainVideo={mainVideo} />
+          <Comments mainVideo={mainVideo} deleteCommentHandler={deleteCommentHandler} />
         </section>
         <NextVideos nextVideos={nextVideos} />
       </section>

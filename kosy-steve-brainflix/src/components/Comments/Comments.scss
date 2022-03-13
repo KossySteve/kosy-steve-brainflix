@@ -55,4 +55,11 @@
     @include tablet {
     }
   }
+  &__delete-icon{
+    color: red;
+    float: right;
+    clear: both;
+    margin: 0 1rem;
+    cursor: pointer;
+  }
 }

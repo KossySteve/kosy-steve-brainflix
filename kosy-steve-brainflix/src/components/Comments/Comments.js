@@ -1,11 +1,13 @@
 import React from "react";
 import './Comments.scss'
 
-function Comments({ mainVideo }) {
+function Comments({ mainVideo, deleteCommentHandler }) {
+
+
   return (
     <section className="post-section">
       {mainVideo.comments.map((comment) => (
-        <div key={comment.timestamp} className="post-container">
+        <div key={comment.id}  className="post-container">
           <div>
             <span className="post__image"></span>
           </div>
@@ -16,7 +18,7 @@ function Comments({ mainVideo }) {
                 {new Date(comment.timestamp).toISOString().slice(0, 10)}
               </p>
             </div>
-            <p className="post__text">{comment.comment}</p>
+            <p className="post__text">{comment.comment} <br/><i onClick={()=>deleteCommentHandler(mainVideo.id, comment.id)} class="post__delete-icon fa-solid fa-trash-can"></i></p>
           </div>
         </div>
       ))}

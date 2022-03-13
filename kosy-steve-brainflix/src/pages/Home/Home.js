@@ -43,17 +43,17 @@ export class Home extends Component {
     axios
       .post(apiUrl(`${id}/comments`), comment)
       .then((response)=> {
-        console.log(response);
+       // console.log(response);
         this.getVideo(apiUrl(id), "selectedVideo");
       })
    
   };
-//delete comments
+//delete comments DELETE /videos/:videoId/comments/:commentId
   deleteCommentHandler = (id, commentId) => {
     axios///videos/:videoId/comments/:commentId
-      .post(apiUrl(`${id}/comments/${commentId}`))
+      .delete(apiUrl(`${id}/comments/${commentId}`))
       .then((response)=> {
-        console.log(response);
+       // console.log(response);
         this.getVideo(apiUrl(id), "selectedVideo");
       })
    
