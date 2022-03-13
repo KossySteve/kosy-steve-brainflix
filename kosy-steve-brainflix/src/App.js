@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Header from "./components/Header/Header";
 import VideoUpload from './pages/VideoUpload/VideoUpload';
-import Home from './pages/Home/Home';
+import Home from './pages/Home/Home';//`http://localhost:8080/videos/${end_point}?api_key=65464bbf-2db6-4b96-86d5-1bf19bb9249b`
 
 export const apiUrl = (end_point) =>`https://project-2-api.herokuapp.com/videos/${end_point}?api_key=65464bbf-2db6-4b96-86d5-1bf19bb9249b`;
 

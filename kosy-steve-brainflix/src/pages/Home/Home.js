@@ -38,7 +38,7 @@ export class Home extends Component {
       this.fetchVideoDetails();
     }
   }
-
+//add comments
   commentHandler = (id, comment) => {
     axios
       .post(apiUrl(`${id}/comments`), comment)
@@ -48,10 +48,17 @@ export class Home extends Component {
       })
    
   };
+//delete comments
+  deleteCommentHandler = (id, commentId) => {
+    axios///videos/:videoId/comments/:commentId
+      .post(apiUrl(`${id}/comments/${commentId}`))
+      .then((response)=> {
+        console.log(response);
+        this.getVideo(apiUrl(id), "selectedVideo");
+      })
+   
+  };
 
-
-
-  //add deleteCommentHandler
 
   render() {
     //loading page to check empty state values before mounting
@@ -72,6 +79,7 @@ export class Home extends Component {
             mainVideo={this.state.selectedVideo}
             nextVideos={filteredNextVideos}
             commentHandler={this.commentHandler}
+            deleteCommentHandler={this.deleteCommentHandler}
           />
         )}
       </section>
