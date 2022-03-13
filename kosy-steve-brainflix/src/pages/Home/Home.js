@@ -41,16 +41,17 @@ export class Home extends Component {
 
   commentHandler = (id, comment) => {
     axios
-      .post(apiUrl(`${id}/comments`), JSON.stringify(comment))
-      .then(function (response) {
+      .post(apiUrl(`${id}/comments`), comment)
+      .then((response)=> {
         console.log(response);
-
         this.getVideo(apiUrl(id), "selectedVideo");
       })
-      .catch(function (error) {
-        console.log(error);
-      });
+   
   };
+
+
+
+  //add deleteCommentHandler
 
   render() {
     //loading page to check empty state values before mounting
