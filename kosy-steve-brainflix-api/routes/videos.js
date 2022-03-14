@@ -12,7 +12,7 @@ const getVideos = () => {
 const saveVideos = (video) => {
     fs.writeFileSync('./data/videos.json', JSON.stringify(video))
 }
-
+//To get all videos
 router.route('/')
     .get((_req, res) => {
         let formattedVideos = getVideos()
@@ -56,7 +56,7 @@ router.route('/')
             "status": "successful"
         })
     })
-
+//To get selected video
 router.get('/:videoId', (req, res) => {
     const selectedVideo = getVideos().find(video => video.id === req.params.videoId);
 
@@ -69,7 +69,7 @@ router.get('/:videoId', (req, res) => {
     
     res.status(200).json(selectedVideo)
 })
-
+//To add comments
 router.post('/:id/comments', (req, res) => {
     //pull our id from the request and rename to id
     const { id } = req.params
@@ -102,18 +102,17 @@ router.post('/:id/comments', (req, res) => {
     //send the response
     res.status(201).json(videoToUpdate)
 })
-//DELETE /videos/:videoId/comments/:commentId
+//To delete comments
 router.delete('/:id/comments/:commentId', (req, res) => {
 
-        //pull our teamId from the request and rename to id
         const { id , commentId} = req.params
     
         //get all the videos
         let videos = getVideos();
-        //find the team to update
-        videoToUpdate = videos.find(team => team.id === id);
+        //find the video to update
+        videoToUpdate = videos.find(video => video.id === id);
     
-        //if team does not exist, send an error
+        //if video does not exist, send an error
         if (!videoToUpdate) {
             res.status(404).send({
                 message: `Video with ID of "${id}" does not exist.`
@@ -124,12 +123,12 @@ router.delete('/:id/comments/:commentId', (req, res) => {
         //update comment
         videoToUpdate.comments = videoToUpdate.comments.filter( comment => comment.timestamp != commentId)
     
-        //find index of the team
-        let teamIndex = videos.findIndex(team => team.id === videoToUpdate.id)
-        //using the index, cut the original team from the array and replace with the updated one
-        videos.splice(teamIndex, 1, videoToUpdate)
+        //find index of the video
+        let videoIndex = videos.findIndex(video => video.id === videoToUpdate.id)
+        //using the index, cut the original video from the array and replace with the updated one
+        videos.splice(videoIndex, 1, videoToUpdate)
     
-        //write the file with the updated team changes
+        //write the file with the updated video changes
         saveVideos(videos)
     
         //send the response
