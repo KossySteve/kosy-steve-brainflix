@@ -28,34 +28,49 @@ router.route('/')
         
         res.status(200).json(formattedVideos)
     })
-
+//upload video
     .post((req, res) => {
         // console.log(req.body.name, uuidv4())
         const newVideo = 
         {
-            id: uuidv4(),
+           
             title: req.body.title,
             channel: "Glen Harper",
-            image: "https://i.imgur.com/MMDMgD7.jpg",
+            image: req.body.image,
             description: req.body.description,
-            views: "738,945",
+            views: "1",
             likes: 0,
             duration: "1:34",
             video: "https://project-2-api.herokuapp.com/stream",
             timestamp: Date.now(),
-            comments: []
+            comments: [
+                {
+                  "name": "Kanye West",
+                  "comment": "I’ve loved trains ever since I was a child. I dreamed about riding one around the world. This is the most fantastic thing I’ve seen yet, and I’m watching it ON a train!",
+                  "likes": 3,
+                  "timestamp": 1632512763100
+                },
+                {
+                  "name": "Diogo Jota",
+                  "comment": "Let’s collaborate on a video for saving money on cheap train tickets! I’ll have my associates contact yours.",
+                  "likes": 0,
+                  "timestamp": 1632496261100
+                }
+              ],
+              id: uuidv4(),
           }
 
         let allVideos = getVideos();
         allVideos.push(newVideo)
 
-        saveVideos(videos)
+        saveVideos(allVideos)
 
         res.status(201).send({
             "id": newVideo.id,
             "status": "successful"
         })
     })
+
 //To get selected video
 router.get('/:videoId', (req, res) => {
     const selectedVideo = getVideos().find(video => video.id === req.params.videoId);

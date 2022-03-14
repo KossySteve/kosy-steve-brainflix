@@ -1,9 +1,13 @@
 import React, { Component } from "react";
-import UploadHero from "../../components/UploadHero/UploadHero";
+import axios from "axios";
 import UploadForm from "../../components/UploadForm/UploadForm";
 import './VideoUpload.scss'
+import { apiUrl } from "../../App";
+
+
+
 export class VideoUpload extends Component {
-  state = { videoTitle: "", videoDescription: "" };
+  state = { image: 'http://localhost:8080/images/Upload-video-preview.jpg', title: "", description: "" };
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
@@ -16,10 +20,17 @@ export class VideoUpload extends Component {
     this.formNotValid()
       ? alert("Failed to upload, complete form")
       : alert("Upload was successful");
-    this.setState({ videoTitle: "", videoDescription: "" }, 
-    ()=>this.props.history.push("/")
-    );
-  };
+      axios
+      .post(apiUrl(""), this.state)
+      .then((response)=> {
+       // console.log(response);
+     // ()=> this.props.history.push("/");
+      }) 
+   // this.setState({ title: "", description: "" }
+    
+  }
+
+ 
   render() {
     return (
       <main className="main-section">
@@ -27,11 +38,11 @@ export class VideoUpload extends Component {
         <section>
           <UploadForm
             handleSubmit={this.handleSubmit}
-            id1={"videoTitle"}
-            id2={"videoDescription"}
+            id1={"title"}
+            id2={"description"}
             onChange={this.handleChange}
-            value1={this.state.videoTitle}
-            value2={this.state.videoDescription}
+            value1={this.state.title}
+            value2={this.state.description}
           />
         </section>
       </main>
