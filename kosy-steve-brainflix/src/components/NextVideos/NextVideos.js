@@ -17,6 +17,7 @@ function NextVideos({ nextVideos}) {
               <img
                 className="next-videos__screen"
                 src={video.image}
+                alt="video pic"
               />
             </div>
             <div className="next-videos__box">

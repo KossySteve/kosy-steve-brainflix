@@ -1,5 +1,6 @@
 const express = require("express"); //require express package
 const app = express(); //instantiates express for server
+const port = process.env.PORT || process.argv[2] || 8080;//?
 const cors = require("cors");
 
 //Middleware for serving images, api documentation, access to body of POST requests, cross origin resource sharing
@@ -26,6 +27,4 @@ const videosRoutes = require("./routes/videos.js");
 app.use("/videos", videosRoutes);
 
 //Listen
-app.listen(8080, () => {
-  console.log("Brainflix server is running on port 8080");
-});
+app.listen(port, () => console.log(`Listening on ${port}`));

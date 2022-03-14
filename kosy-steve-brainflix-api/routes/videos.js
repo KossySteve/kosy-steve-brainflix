@@ -3,6 +3,7 @@ const router = express.Router();
 const fs = require("fs");
 const { v4: uuidv4 } = require('uuid');
 
+
 const getVideos = () => {
     const videos = fs.readFileSync('./data/videos.json')
     return JSON.parse(videos)
@@ -27,6 +28,7 @@ router.route('/')
         
         res.status(200).json(formattedVideos)
     })
+
     .post((req, res) => {
         // console.log(req.body.name, uuidv4())
         const newVideo = 
@@ -40,7 +42,7 @@ router.route('/')
             likes: 0,
             duration: "1:34",
             video: "https://project-2-api.herokuapp.com/stream",
-            timestamp: new Date(),
+            timestamp: Date.now(),
             comments: []
           }
 
@@ -68,36 +70,69 @@ router.get('/:videoId', (req, res) => {
     res.status(200).json(selectedVideo)
 })
 
-// router.put('/:teamId/likes/increment', (req, res) => {
-//     //pull our teamId from the request and rename to id
-//     const { teamId: id } = req.params
+router.post('/:id/comments', (req, res) => {
+    //pull our id from the request and rename to id
+    const { id } = req.params
 
-//     //get all the videos
-//     let videos = getVideos();
-//     //find the team to update
-//     teamToUpdate = videos.find(team => team.id === id);
+    //get all the videos
+    let videos = getVideos();
+    //find the video to update
+    videoToUpdate = videos.find(video => video.id === id);
 
-//     //if team does not exist, send an error
-//     if (!teamToUpdate) {
-//         res.status(404).send({
-//             message: `Team with ID of "${id}" does not exist.`
-//         })
-//         return;
-//     }
+    //if video does not exist, send an error
+    if (!videoToUpdate) {
+        res.status(404).send({
+            message: `Video with ID of "${id}" does not exist.`
+        })
+        return;
+    } 
+    
 
-//     //update likes
-//     teamToUpdate.likes += 1
+    //update comment
+    videoToUpdate.comments.push({...req.body, "likes": 0, "timestamp": Date.now() })
 
-//     //find index of the team
-//     let teamIndex = videos.findIndex(team => team.id === teamToUpdate.id)
-//     //using the index, cut the original team from the array and replace with the updated one
-//     videos.splice(teamIndex, 1, teamToUpdate)
+    //find index of the video
+    let videoIndex = videos.findIndex(video => video.id === videoToUpdate.id)
+    //using the index, cut the original video from the array and replace with the updated one
+    videos.splice(videoIndex, 1, videoToUpdate)
 
-//     //write the file with the updated team changes
-//     saveVideos(videos)
+    //write the file with the updated video changes
+    saveVideos(videos)
 
-//     //send the response
-//     res.status(201).json(teamToUpdate)
-// })
+    //send the response
+    res.status(201).json(videoToUpdate)
+})
+//DELETE /videos/:videoId/comments/:commentId
+router.delete('/:id/comments/:commentId', (req, res) => {
 
+        //pull our teamId from the request and rename to id
+        const { id , commentId} = req.params
+    
+        //get all the videos
+        let videos = getVideos();
+        //find the team to update
+        videoToUpdate = videos.find(team => team.id === id);
+    
+        //if team does not exist, send an error
+        if (!videoToUpdate) {
+            res.status(404).send({
+                message: `Video with ID of "${id}" does not exist.`
+            })
+            return;
+        }
+    
+        //update comment
+        videoToUpdate.comments = videoToUpdate.comments.filter( comment => comment.timestamp != commentId)
+    
+        //find index of the team
+        let teamIndex = videos.findIndex(team => team.id === videoToUpdate.id)
+        //using the index, cut the original team from the array and replace with the updated one
+        videos.splice(teamIndex, 1, videoToUpdate)
+    
+        //write the file with the updated team changes
+        saveVideos(videos)
+    
+        //send the response
+        res.status(201).json(videoToUpdate)
+    })
 module.exports = router;

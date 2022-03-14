@@ -7,7 +7,7 @@ function Comments({ mainVideo, deleteCommentHandler }) {
   return (
     <section className="post-section">
       {mainVideo.comments.map((comment) => (
-        <div key={comment.id}  className="post-container">
+        <div key={comment.timestamp}  className="post-container">
           <div>
             <span className="post__image"></span>
           </div>
@@ -18,7 +18,7 @@ function Comments({ mainVideo, deleteCommentHandler }) {
                 {new Date(comment.timestamp).toISOString().slice(0, 10)}
               </p>
             </div>
-            <p className="post__text">{comment.comment} <br/><i onClick={()=>deleteCommentHandler(mainVideo.id, comment.id)} class="post__delete-icon fa-solid fa-trash-can"></i></p>
+            <p className="post__text">{comment.comment} <br/><i onClick={()=>deleteCommentHandler(mainVideo.id, comment.timestamp)} class="post__delete-icon fa-solid fa-trash-can"></i></p>
           </div>
         </div>
       ))}
