@@ -6,7 +6,6 @@ import Home from './pages/Home/Home';//
 
 export const apiUrl = (end_point) =>`http://localhost:8080/videos/${end_point}?api_key=65464bbf-2db6-4b96-86d5-1bf19bb9249b`;
 
-
 function App() {
   return (
     <BrowserRouter>
