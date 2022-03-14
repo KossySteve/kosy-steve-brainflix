@@ -1,6 +1,7 @@
+require('dotenv').config();
 const express = require("express"); //require express package
 const app = express(); //instantiates express for server
-const port = process.env.PORT || process.argv[2] || 8080;//?
+const PORT = process.env.PORT || 8080;
 const cors = require("cors");
 
 //Middleware for serving images, api documentation, access to body of POST requests, cross origin resource sharing
@@ -14,11 +15,11 @@ app.use((req, res, next) => {
   const { api_key } = req.query;
 
   // console.log("incoming request")
-
-  api_key === "65464bbf-2db6-4b96-86d5-1bf19bb9249b"
+  api_key === process.env.API_KEY
     ? next()
     : res.status(401).send({
-        message: "Unauthorized. Please refer to documentation and  add a api key",
+        message:
+          "Unauthorized. Please refer to documentation and  add a api key",
       });
 });
 
@@ -27,4 +28,6 @@ const videosRoutes = require("./routes/videos.js");
 app.use("/videos", videosRoutes);
 
 //Listen
-app.listen(port, () => console.log(`Listening on ${port}`));
+app.listen(PORT, () => {
+  console.log("server is running on port " + PORT);
+});

@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import axios from "axios";
 import UploadForm from "../../components/UploadForm/UploadForm";
-import './VideoUpload.scss'
+import "./VideoUpload.scss";
 import { apiUrl } from "../../App";
 
-
-
 export class VideoUpload extends Component {
-  state = { image: 'http://localhost:8080/images/Upload-video-preview.jpg', title: "", description: "" };
+  state = {
+    image: "http://localhost:8080/images/Upload-video-preview.jpg",
+    title: "",
+    description: "",
+  };
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
@@ -19,18 +21,15 @@ export class VideoUpload extends Component {
     e.preventDefault();
     this.formNotValid()
       ? alert("Failed to upload, complete form")
-      : alert("Upload was successful");
-      axios
-      .post(apiUrl(""), this.state)
-      .then((response)=> {
-       // console.log(response);
-     // ()=> this.props.history.push("/");
-      }) 
-   // this.setState({ title: "", description: "" }
-    
-  }
+      : axios.post(apiUrl(""), this.state).then((response) => {
+          this.setState({ title: "", description: "" }, () => {
+            alert("Upload was successful");
+            this.props.history.push("/");
+          });
+        });
 
- 
+  };
+
   render() {
     return (
       <main className="main-section">
