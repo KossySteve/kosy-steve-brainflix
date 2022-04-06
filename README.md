@@ -21,7 +21,7 @@ This project is a video react app built with react & NodeJs. It shares videos th
 
 ## The Functionalities of in-JECT app?
 This app is equipped with the abilities of a full-stack CRUD application -- websites that can create, read, update, and delete videos.
-Such functionalities include post video, get jobs, update & delete jobs through making request to server.
+Such functionalities include post video, get videos, update & delete videos through making request to server.
 
 ## Author
 
