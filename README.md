@@ -15,11 +15,12 @@ This project is a video react app built with react & NodeJs. It shares videos th
 - Secondly run git clone with copied repo path  in your terminal. 
 - Open folders and navigate to project folder.
 - Run npm install in this folder.
-- When install is done, run npm start in the same folder.
+- When install is done, run npm start for react app in the same folder.
 - Once browser has opened you can interact with application.
+- For server to run npm install is done, run node index.js.
 
 
-## The Functionalities of in-JECT app?
+## The Functionalities
 This app is equipped with the abilities of a full-stack CRUD application -- websites that can create, read, update, and delete videos.
 Such functionalities include post video, get videos, update & delete videos through making request to server.
 
