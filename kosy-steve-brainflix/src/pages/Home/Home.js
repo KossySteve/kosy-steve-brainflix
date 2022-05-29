@@ -15,6 +15,7 @@ export class Home extends Component {
   fetchVideoDetails = () => {
     //sets currentVideoId to url parameter or first video in video list
     let currentVideoId = this.props.match.params.videoId;
+    console.log(currentVideoId);
 
     //if user inputs home url in the browser
     if (!currentVideoId) {
