@@ -29,8 +29,8 @@ function Header() {
           <img className="nav__img" src={avatarimg} alt="profile" />
         </li>
         <li className="nav__list-item">
-          <Link to="/upload">
-            <Button src={upload} className={"nav__btn"} text={"UPLOAD"} />
+          <Link to="/">
+            <Button src={upload} className={"nav__btn"} text={"RESET"} />
           </Link>
         </li>
       </ul>

@@ -1,52 +1,54 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import UploadForm from "../../components/UploadForm/UploadForm";
 import "./VideoUpload.scss";
 import { apiUrl } from "../../App";
+import swal from "sweetalert";
 
-export class VideoUpload extends Component {
-  state = {
-    image: "http://localhost:8080/images/Upload-video-preview.jpg",
+const VideoUpload = () => {
+  let history = useHistory();
+  const [image, setImage] = useState({
+    image: "https://imgflixserver2.herokuapp.com/images/Upload-video-preview.jpg",
     title: "",
     description: "",
+  });
+
+  const handleChange = (e) => {
+    setImage({ [e.target.name]: e.target.value });
   };
 
-  handleChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
+  const formNotValid = () => Object.values(image).includes("");
 
-  formNotValid = () => Object.values(this.state).includes("");
-
-  handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    this.formNotValid()
+    formNotValid()
       ? alert("Failed to upload, complete form")
-      : axios.post(apiUrl(""), this.state).then((response) => {
-          this.setState({ title: "", description: "" }, () => {
-            alert("Upload was successful");
-            this.props.history.push("/");
-          });
-        });
+      : axios.post(apiUrl(""), image).then((response) => {
+          setImage({ title: "", description: "" });
 
+          swal.fire("Upload was successful");
+          history.push("/");
+        });
   };
 
-  render() {
-    return (
-      <main className="main-section">
-        <h1 className="main-section__title">Upload Video</h1>
-        <section>
-          <UploadForm
-            handleSubmit={this.handleSubmit}
-            id1={"title"}
-            id2={"description"}
-            onChange={this.handleChange}
-            value1={this.state.title}
-            value2={this.state.description}
-          />
-        </section>
-      </main>
-    );
-  }
-}
+  return (
+    <main className="main-section">
+      <h1 className="main-section__title">Upload Video</h1>
+      <section>
+        <UploadForm
+          handleSubmit={handleSubmit}
+          id1={"title"}
+          id2={"description"}
+          onChange={handleChange}
+          value1={image.title}
+          value2={image.description}
+          //for cancel button
+          onClick={() => setImage({ title: "", description: "" })}
+        />
+      </section>
+    </main>
+  );
+};
 
 export default VideoUpload;

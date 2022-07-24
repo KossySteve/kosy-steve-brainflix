@@ -1,6 +1,6 @@
 import React from "react";
 
-function FormInput({className, labeltext, onChange, id, value, placeholder}) {
+function FormInput({className, labeltext, onChange, id, value, placeholder, type}) {
   return (
     <div className="upload-form">
       <label htmlFor={id} className="upload-form__label">
@@ -8,7 +8,7 @@ function FormInput({className, labeltext, onChange, id, value, placeholder}) {
       </label>
       <input
         className={className}
-        type="text"
+        type={type}
         id={id}
         value={value}
         onChange={onChange}
