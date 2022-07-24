@@ -9,7 +9,7 @@ import swal from "sweetalert";
 const VideoUpload = () => {
   let history = useHistory();
   const [image, setImage] = useState({
-    image: "http://localhost:8080/images/Upload-video-preview.jpg",
+    image: "https://imgflixserver2.herokuapp.com/images/Upload-video-preview.jpg",
     title: "",
     description: "",
   });
