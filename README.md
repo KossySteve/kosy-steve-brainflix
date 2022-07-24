@@ -1,4 +1,4 @@
-This project is a video react app built with react & NodeJs. It shares videos through endpoints from server api from data json files
+This project is a image react app built with react & NodeJs. It shares videos through endpoints from server api from data json files
 ## Built With
 
 - HTML/CSS
